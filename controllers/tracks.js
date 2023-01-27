@@ -1,18 +1,22 @@
 const { request, response } = require('express')
 const { handleHttpError } = require('../helpers/handleError')
 const {tracksModel} = require('../models')
-const { matchedData, body } = require('express-validator')
+const { matchedData} = require('express-validator')
+
+
 
 
 //Listar todos los Items
-
 const getItems = async (req = request,resp = response) =>{
 
     try {
         
+        const user = req.user
+
         const data = await tracksModel.find({})
 
-        resp.send({data})
+
+        resp.send({data , user})
 
     } catch (error) {
         
@@ -64,10 +68,12 @@ const createItem = async (req = request,resp = response) =>{
         
         handleHttpError(resp ,'Error_CREATE_ITEM')
 
+        return
+
     }
 }
 
-
+//Actualizar un Registro
 const updateItem = async (req = request,resp = response) =>{
 
 
@@ -88,6 +94,7 @@ const updateItem = async (req = request,resp = response) =>{
 
 }
 
+//Borrar un Registro
 const deleteItem = async (req = request,resp = response) =>{
 
 
