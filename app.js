@@ -36,6 +36,7 @@ const {IncomingWebhook} = require('@slack/webhook');
         stream: loggerStream,
         skip: function (req,resp) {
             return resp.statusCode < 400
+             
         }
 
 

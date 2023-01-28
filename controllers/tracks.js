@@ -60,11 +60,13 @@ const createItem = async (req = request,resp = response) =>{
 
         const body = matchedData(req)
 
+
         const data = await tracksModel.create(body)
       
-          resp.send({data})
+          resp.send({data ,user})
 
     } catch (error) {
+       
         
         handleHttpError(resp ,'Error_CREATE_ITEM')
 

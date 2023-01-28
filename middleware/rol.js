@@ -15,6 +15,8 @@ const checkRol = (roles) => (req = request,resp = response,next) =>{
         const checkValueRol = roles.some((rolSingle) => rolesByUser.includes(rolSingle))
 
         if (!checkValueRol) {
+
+            
             
             handleHttpError(resp,'USER NOT Permissions',403)
 
@@ -24,6 +26,8 @@ const checkRol = (roles) => (req = request,resp = response,next) =>{
 
     } catch (error) {
         
+        
+
         handleHttpError(resp, 'Error Permissions',403)
 
         return
